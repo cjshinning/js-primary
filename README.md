@@ -1,0 +1,2 @@
+# js-primary
+learning js
