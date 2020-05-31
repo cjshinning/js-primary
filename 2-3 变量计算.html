@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2-3 变量计算</title>
+</head>
+<body>
+    <script>
+        // const a = 100 + 10; //110 
+        // const b = 100 + '10';   //10010
+        // const  c = true + '10'; //true10
+        // console.log(a, b, c);  
+        
+        // ==会进行隐式类型转换
+        // console.log(100 == '100');  //true
+        // console.log(0 == '');   //true
+        // console.log(0 == false);    //true
+        // console.log(false == '');   //true
+        // console.log(null == undefined); //true
+
+        // 判断是不是null或者undefined时，使用==，除了这种情况，其他的都用===
+        // const obj = {x: 100};
+        // if(obj.a == null){}
+        // 相当于：
+        // if(obj.a === null || obj.a === undefined){}
+
+        const obj1 = {x: 100, y: 200};
+        const obj2 = obj1;
+        let x1 = obj1.x;    //100
+        console.log(x1);
+        obj2.x = 101;
+        x1 = 102;
+        console.log(x1);    //102
+        console.log(obj1);  //{x: 101, y: 200}
+    </script>
+</body>
+</html>

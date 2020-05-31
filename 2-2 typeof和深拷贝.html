@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2-2 typeof和深拷贝</title>
+</head>
+<body>
+    <script>
+        // typeof运算符
+        // 1、判断所有值类型
+        // let a;
+        // console.log(typeof a);  //undefined
+        
+        // const str = 'abc';
+        // console.log(typeof str);    //string
+
+        // const n = 100;
+        // console.log(typeof n);  //number
+
+        // const b = true;
+        // console.log(typeof b);  //boolean
+
+        // const s = Symbol('s');
+        // console.log(typeof s);  //symbol
+
+        // 2、能判断函数
+        console.log(typeof console.log);    //function
+        console.log(typeof function(){});   //function
+
+        // 3、能识别引用类型（不能再继续识别）
+        console.log(typeof null);   //object
+        console.log(typeof ['a', 'b']); //object
+        console.log(typeof {x: 100});   //object
+    </script>
+</body>
+</html>
