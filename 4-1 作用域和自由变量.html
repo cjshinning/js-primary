@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4-1 作用域和自由变量</title>
+</head>
+<body>
+    <script>
+        // 1、创建10个a标签，点击的时候弹出对应的序号
+        // let i, a;
+        // for(i=0;i<10;i++){
+        //     a = document.createElement('a');
+        //     a.innerHTML = i + '<br/>';
+        //     a.addEventListener('click', function(e){
+        //         e.preventDefault();
+        //         alert(i);
+        //     }, false)
+        //     document.body.appendChild(a);
+        // }    
+        // 原因：创建10个a标签很快就完成，而点击事件并没有触发，当a标签被点击时，i早就变成10了，因为i的作用域是全局变量
+        // 解决：将let i 放到循环体内，在for的块级作用域里面，每次都会有新的变量
+        let a;
+        for(let i=0;i<10;i++){
+            a = document.createElement('a');
+            a.innerHTML = i + '<br/>';
+            a.addEventListener('click', function(e){
+                e.preventDefault();
+                alert(i);
+            }, false)
+            document.body.appendChild(a);
+        }    
+
+        // 作用域：一个变量的合法使用范围
+        // let a = 0;
+        // function fn1(){
+        //     let a1 = 100;
+
+        //     function fn2(){
+        //         let a2 = 200;
+                
+        //         function fn3(){
+        //             let a3 = 300; 
+        //             return a + a1 + a2 + a3;
+        //         }
+        //         fn3();
+        //     }
+        //     fn2();
+        // }
+        // fn1();
+        
+        // 块级作用域
+        // if(true){
+        //     let x = 100;
+        // }
+        // console.log(x); //报错
+
+        // 自由变量：在当前作用域下没有定义却被使用的变量
+        // 会向父级作用域查找，直到找到
+        
+    </script>
+</body>
+</html>

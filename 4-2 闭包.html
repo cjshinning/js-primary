@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4-2 闭包</title>
+</head>
+<body>
+    <script>
+        // 普通作用域函数定义在什么地方，就在什么地方调用
+        // 而闭包是函数定义的地方和它执行的地方不一样
+        // 闭包：作用域应用的特殊情况，有两种表现：
+        // 函数作为参数被传递
+        // 函数作为返回值被返回
+
+        // function create(){
+        //     let a = 100;
+        //     return function(){
+        //         console.log(a); //100
+        //     }
+        // }   
+        // let fn = create();
+        // let a = 200;
+        // fn();
+
+        function print(fn){
+            const a = 200;
+            fn();
+        }
+        let a = 100;
+        function fn(){
+            console.log(a);
+        }
+        print(fn);
+
+        // 所有的自由变量的查找，是在函数定义的地方，向上级作用域查找
+        // 不是在执行的地方
+    </script>
+</body>
+</html>

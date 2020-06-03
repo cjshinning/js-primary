@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4-3 this</title>
+</head>
+<body>
+    <script>
+        // this是执行时上下文
+        // 是在执行时确定的，而不是定义时确定的
+        function fn1(){
+            console.log(this);
+        }
+        fn1();  //Window
+
+        fn1.call({x: 100}); //{x: 100}
+
+        const fn2 = fn1.bind({x: 200}); //{x: 200}
+        fn2();
+    </script>
+</body>
+</html>
