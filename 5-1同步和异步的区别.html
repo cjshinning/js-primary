@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5-1同步和异步的区别</title>
+</head>
+<body>
+    <script>
+        // JS是单线程语言，只能同时做一件事情
+        // 异步：非阻塞模式（不会阻塞代码执行）
+        // 同步：阻塞模式（阻塞代码执行）
+        // 异步(callback 回调函数)：不会阻塞后面代码的执行
+        // console.log(100);
+        // setTimeout(()=>{
+        //     console.log(200)
+        // }, 1000);
+        // console.log(300);    
+        // 100 300 200(1s后打印)
+
+        // 同步：在等待过程中卡住，后面的代码不会执行
+        // console.log(100);
+        // alert(200);
+        // console.log(300);
+
+        // 应用场景
+        // 网络请求，如ajax图片加载
+        // 定时人物,如setTimeout
+
+        // console.log('start');
+        // let img = document.createElement('img');
+        // img.onload = function(){
+        //     console.log('loaded');
+        // }
+        // img.src = 'http://imooc.com/static/img/index/logo-recommended.png';
+        // console.log('end')
+
+        // start end loaded
+    </script>
+</body>
+</html>

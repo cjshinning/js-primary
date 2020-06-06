@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script>
+        // function getData(url){
+        //     return new Promise((resolve, reject) => {
+        //         $.ajax({
+        //             url,
+        //             success(data){
+        //                 resolve(data);
+        //             },
+        //             error(err){
+        //                 reject(err);
+        //             }
+        //         })
+        //     })
+        // }    
+
+        // const url1 = '/data1.json';
+        // const url2 = '/data2.json';
+        // const url3 = '/data3.json';
+        // getData(url1).then(data1 => {
+        //     console.log(data1);
+        //     return getData(url2);
+        // }).then(data2 => {
+        //     console.log(data2);
+        //     return getData(url3);
+        // }).then(data3 => {
+        //     console.log(data3);
+        // }).catch(err => console.error(err));
+
+        // 图片加载
+        function loadImg(src){
+            let p = new Promise((resolve, reject) => {
+                let img = document.createElement('img');
+                img.onload = function(){
+                    resolve(img);
+                }
+                img.onerror = function(){
+                    let err = new Error(`图片加载失败 ${img.src}`);
+                    reject(err);
+                }
+                img.src = src;
+            })
+            return p;
+        }
+
+        // const url = 'https://www.imooc.com/static/img/index/logo-recommended1.png';
+        // loadImg(url).then(img => {
+        //     console.log(img.width);
+        //     return img;
+        // }).then(img => {
+        //     console.log(img.height);
+        // }).catch(err => {
+        //     console.log(err);
+        // })
+
+        const url1 = 'https://www.imooc.com/static/img/index/logo-recommended1.png';
+        const url2 = 'https://www.imooc.com/static/img/index/new/path-2019-9.png';
+
+        loadImg(url1).then(img1 => {
+            console.log(img1.width);
+            return img1;    //普通对象
+        }).then(img1 => {
+            console.log(img1.height);
+            return loadImg(url2);   //promise实例
+        }).then(img2 => {
+            console.log(img2.width);
+            return img2;
+        }).then(img2 => {
+            console.log(img2.height);
+        }).catch(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
