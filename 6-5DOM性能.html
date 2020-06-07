@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6-5DOM性能</title>
+    <style>
+        .container {
+            border: 1px solid #ccc;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" class="container">
+        <p id="p1">一段文字1</p>
+        <p>一段文字2</p>
+        <p>一段文字3</p>
+    </div>
+    <div id="div2" class="container">
+        <img src="https://www.imooc.com/static/img/index/logo-recommended.png" alt="">
+    </div>
+    <ul id="list"></ul>
+    <script> 
+    // DOM性能
+    // DOM操作非常澳规，避免频繁的DOM操作
+    // 1 对DOM查询做缓存
+    // 2 将频繁的操作改为一次性操作
+    
+    // 直接插入性能差
+    // const list = document.getElementById('list');
+
+    // for(let i = 0;i < 10;i++){
+    //     const li = document.createElement('li');
+    //     li.innerHTML = `List item ${i}`;
+    //     list.appendChild(li);
+    // }
+
+    // 使用documentFragment
+    const list = document.getElementById('list');
+    const frag = document.createDocumentFragment();
+
+    for(let i = 0;i < 20;i++){
+        const li = document.createElement('li');
+        li.innerHTML = `List item ${i}`;
+        frag.appendChild(li);
+    }
+
+    list.appendChild(frag);
+    </script>
+
+</body>
+</html>
