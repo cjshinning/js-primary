@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">一个按钮</button>
+
+    <div id="div1">
+        <a href="#">a1</a><br/>
+        <a href="#">a2</a><br/>
+        <a href="#">a3</a><br/>
+        <a href="#">a4</a><br/>
+        <button>加载更多...</button>
+    </div>
+
+    <script>
+        // 通用事件绑定函数
+        // function bindEvent(elem, type, fn){
+        //     elem.addEventListener(type, fn);
+        // }
+
+        function bindEvent(elem, type, selector, fn){
+            if(fn == null){
+                fn = selector;
+                selector = null;
+            }
+            elem.addEventListener(type, event => {
+                const target = event.target;
+                if(selector){
+                    // 代理绑定
+                    if(target.matches(selector)){
+                        fn.call(target, event);
+                    }
+                }else{
+                    // 普通绑定
+                    fn.call(target, event);
+                }
+            })
+        }
+
+        // 普通绑定
+        const btn1 = document.getElementById('btn1');
+        bindEvent(btn1, 'click', function(event) {
+            // console.log(event.target);  //获取事件触发的元素
+            event.preventDefault();
+            alert(this.innerHTML);
+        })
+
+        // 代理绑定
+        const div1 = document.getElementById('div1');
+        bindEvent(div1, 'click', 'a', function(event) {
+            event.preventDefault();
+            alert(this.innerHTML);
+        })
+
+        // 事件代理通常用于因为数量太多、结果复杂而不好挨个去绑定click事件的情况，把它们绑定到他们的某个父元素上，然后根据target.nodeName来判断
+        // 代码简洁
+        // 减少浏览器内存占用
+        // 但是，不要滥用，一般用于瀑布流
+
+        // 事件冒泡的流程
+        // 基于DOM树形结构
+        // 事件会顺着促发元素往上冒泡
+        // 应用场景：代理
+
+        // 无限下拉图片列表，如何监听每个图片点击
+        // 事件代理
+        // 用e.target获取触发元素
+        // 用matches来判断是否促发元素
+
+    </script>
+</body>
+</html>
