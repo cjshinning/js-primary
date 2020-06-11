@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9-1XMLHttpRequest</title>
+</head>
+<body>
+    <script>
+    // JSONP
+    // <script>可绕过跨域限制
+    // 服务器可以任意动态拼接数据返回
+    // 所以，script就可以获取跨域的数据，只要服务器端愿意返回
+    window.abc = function(data){
+        console.log(data);
+    }
+    </script>
+    <!-- // <script src="http://imooc.com/getData.js"></script> -->
+    <!-- 将返回callback({x: 100, y: 200}) -->
+    <script src="http://127.0.0.1:5501/data/jsonp.js?callback=abc"></script>
+</body>
+</html>
